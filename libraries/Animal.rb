@@ -6,21 +6,19 @@ class Animal < Inspec.resource(1)
   end
 
   def exist?
-    load_data unless @data
-    @data.select{ |animal| animal["name"] == @name }.length > 0
+    data.select{ |animal| animal["name"] == @name }.length > 0
   end
 
   def species
-    load_data unless @data
     return '' unless exist?
-    @data.select{ |animal| animal["name"] == @name }.first["species"]
+    data.select{ |animal| animal["name"] == @name }.first["species"]
   end
 
 private
   @name
   @data = nil
 
-  def load_data
-    @data = JSON.parse(inspec.http('https://s3.eu-west-2.amazonaws.com/compliance-demo-assets/animals.json').body)
+  def data
+    @data ||= JSON.parse(inspec.http('https://s3.eu-west-2.amazonaws.com/compliance-demo-assets/animals.json').body)
   end
 end
