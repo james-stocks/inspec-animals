@@ -1,6 +1,9 @@
 # encoding: utf-8
 # copyright: 2018, The Authors
 
+# Attributes
+min_croc_weight = attribute('min_croc_weight', default: 90, description: 'Crocodiles below this weight are malnourished.')
+
 title 'Animals'
 
 control 'Check my animals' do
@@ -15,7 +18,7 @@ control 'Check my animals' do
     it { should_not exist }
   end
 
-  describe animals.where{ species == 'Crocodile' && weight.to_i < 90 } do
+  describe animals.where{ species == 'Crocodile' && weight.to_i < min_croc_weight } do
     its('entries') { should be_empty }
   end
 end
