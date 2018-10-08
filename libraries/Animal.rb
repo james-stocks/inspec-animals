@@ -21,6 +21,6 @@ private
   @data = nil
 
   def load_data
-    @data = JSON.parse(File.read('animals.json'))
+    @data = JSON.parse(inspec.http('https://s3.eu-west-2.amazonaws.com/compliance-demo-assets/animals.json').body)
   end
 end
