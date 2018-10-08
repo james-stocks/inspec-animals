@@ -15,9 +15,7 @@ control 'Check my animals' do
     it { should_not exist }
   end
 
-  animals.where(species: 'Crocodile').entries.each do |crocodile|
-    describe crocodile do
-      its(:weight) { should cmp > 90 }
-    end
+  describe animals.where{ species == 'Crocodile' && weight.to_i < 90 } do
+    its('entries') { should be_empty }
   end
 end
