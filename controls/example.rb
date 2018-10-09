@@ -1,8 +1,7 @@
 # encoding: utf-8
 # copyright: 2018, The Authors
 
-# Attributes
-min_croc_weight = attribute('min_croc_weight', default: 90, description: 'Crocodiles below this weight are malnourished.')
+min_croc_weight = attribute('min_croc_weight')
 
 title 'Animals'
 
