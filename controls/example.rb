@@ -18,7 +18,7 @@ control 'Check my animals' do
     it { should_not exist }
   end
 
-  describe animals.where{ species == 'Crocodile' && weight.to_i < min_croc_weight } do
+  describe animals.where{ species == 'Crocodile' && weight < min_croc_weight } do
     its('entries') { should be_empty }
   end
 end
