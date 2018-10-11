@@ -12,10 +12,9 @@ private
   @data = nil
 
   def data
-    unless @data
-      @data = JSON.parse(inspec.http('https://s3.eu-west-2.amazonaws.com/compliance-demo-assets/animals.json').body)
-      @data.map! { |entry| Hash[entry.map { |k,v| [k.to_sym, v] }] }
-    end
+    @data ||= JSON.parse(
+      inspec.http('https://s3.eu-west-2.amazonaws.com/compliance-demo-assets/animals.json').body
+    ).map { |entry| Hash[entry.map { |k,v| [k.to_sym, v] }] }
     @data
   end
 end
