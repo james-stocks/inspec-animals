@@ -18,6 +18,6 @@ control 'Check my animals' do
   end
 
   describe animals.where{ species == 'Crocodile' && weight < min_croc_weight } do
-    its('entries') { should be_empty }
+    its('raw_data') { should be_empty }
   end
 end
