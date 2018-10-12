@@ -3,8 +3,6 @@
 
 min_croc_weight = attribute('min_croc_weight')
 
-title 'Animals'
-
 control 'Check my animals' do
   impact 1.0
   title 'Check my animals'
